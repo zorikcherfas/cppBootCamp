@@ -7,11 +7,12 @@
 //
 
 #include <iostream>
-#include "LinkedList.hpp"
-#include "Stack.hpp"
-#include "Queue_Array.hpp"
-#include "Queue_LinkedList.hpp"
-#include "BinarySearch.hpp"
+#include "data-structs/LinkedList.hpp"
+#include "data-structs/Stack.hpp"
+#include "data-structs/Queue_Array.hpp"
+#include "data-structs/Queue_LinkedList.hpp"
+#include "search/BinarySearch.hpp"
+
 using namespace std;
 
 void testing_linkedList();
