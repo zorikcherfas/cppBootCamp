@@ -151,5 +151,17 @@ void LinkedList::delete_position(int position)
     prevNode->next = currentNode->next;
     delete currentNode;
     
+}
+
+int LinkedList::getFirst(){
+    if(this->m_head)
+        return this->m_head->data;
+    return -1;
+}
+
+int LinkedList::getLast(){
+    if(this->m_tail)
+        return this->m_tail->data;
     
+    return -1;
 }

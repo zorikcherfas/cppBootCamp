@@ -36,6 +36,8 @@ public:
     void delete_last();
     void delete_first();
     void delete_position(int position);
+    int getFirst();
+    int getLast();
 private:
     node *m_tail;
     node *m_head;

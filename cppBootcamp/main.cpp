@@ -9,16 +9,20 @@
 #include <iostream>
 #include "LinkedList.hpp"
 #include "Stack.hpp"
+#include "Queue_Array.hpp"
+#include "Queue_LinkedList.hpp"
+
 using namespace std;
 
 void testing_linkedList();
 void testing_stack();
+void testing_queue();
 
 int main(int argc, const char * argv[]) {
 
 //    testing_linkedList();
-    testing_stack();
-    
+//    testing_stack();
+    testing_queue();
     return 0;
 }
 
@@ -58,8 +62,35 @@ void testing_stack()
     cout << "Pop: " << stack.pop() <<"\n";
 
     stack.display();
+}
+
+void testing_queue()
+{
+    Queue_Array qArray(4);
+    QueueLinkedList qList;
+
+    cout << "--Queue Array--" <<endl;
+    qArray.enqueue(1);
+    qArray.enqueue(2);
+    qArray.enqueue(3);
+    qArray.enqueue(4);
+    qArray.enqueue(5);
+    qArray.enqueue(6);
+
+
+    qArray.dequeue();
+    qArray.dequeue();
+    cout << "Peak: " << qArray.peak() <<"\n";
+    
+    cout << "--Queue List--" <<endl;
+
+    qList.enqueue(1);
+    qList.enqueue(2);
+    qList.enqueue(3);
+    qList.enqueue(4);
+    qList.dequeue();
+    cout << "Peak: " << qList.peak() <<"\n";
 
     
 
-    
 }
