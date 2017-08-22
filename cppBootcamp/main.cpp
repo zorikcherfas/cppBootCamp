@@ -11,18 +11,22 @@
 #include "Stack.hpp"
 #include "Queue_Array.hpp"
 #include "Queue_LinkedList.hpp"
-
+#include "BinarySearch.hpp"
 using namespace std;
 
 void testing_linkedList();
 void testing_stack();
 void testing_queue();
 
+void testing_BinarySearch();
+
+
 int main(int argc, const char * argv[]) {
 
 //    testing_linkedList();
 //    testing_stack();
-    testing_queue();
+//    testing_queue();
+    testing_BinarySearch();
     return 0;
 }
 
@@ -92,5 +96,16 @@ void testing_queue()
     cout << "Peak: " << qList.peak() <<"\n";
 
     
+
+}
+
+void testing_BinarySearch(){
+    int array[] = {1,3,5,6,9,11};
+    int arraySize = sizeof(array) / sizeof(int);
+    
+    BinarySerach *binarySearch = new BinarySerach(array, arraySize , 5);
+    
+    binarySearch->printArray();
+    binarySearch->search();
 
 }
