@@ -28,56 +28,154 @@ public:
         cout << "ProcessID " << m_processID << endl;
     }
     
-    void test1()
-    {
-        printf("Test 1 - Zombie process\n");
-        
-        int i;
-        
-        int pid = fork();
-        
-        if(pid == 0 ){
-            //Chiled process
-            for( i = 0 ; i < 20 ; i++)
-            {
-                printf("child proceess %d\n", getpid());
-            }
-        }
-        else{
-            printf("Father proceess %d\n", getpid());
-            while(1);
-        }
-    }
-    
-    
-    void test2()
-    {
-        printf("Test 2 - Zombie process\n");
-        
-        int i;
-        
-        pid_t child_pid = fork();
+void OS::test1()
+{
 
-        if(child_pid  < 0 )
-        {
-            printf("Fork Failure\n");
-            return ;
-        }
-        if(child_pid == 0)
-        {
-                //Chiled process
-                printf("child proceess %d\n", getpid());
-                exit(0);
-    
-        }
-        else
-        {
-            printf("Father proceess %d\n", getpid());
-            usleep(1000000 * 20); // will sleep for 1 s
-            printf("Father done\n");
+    pid_t pid;
 
-        }
+    pid = fork();
+
+    if(pid == 0)
+    {
+      //child prcoress
+      printf("This is the child pid %d\n",getpid());
     }
-    
-};
+    else
+    {
+      printf("This is the Father pid %d\n",getpid());
+    }
+}
+
+void OS:: test2()
+{
+
+    pid_t pid;
+
+    pid = fork();
+
+    if(pid == 0)
+    {
+      //child prcoress
+      printf("This is the child pid - %d  done the progrem: will be zombie(defunct) since father is still working\n",getpid());
+    }
+    else
+    {
+      printf("This is the Father pid %d\n",getpid());
+      while(1);
+    }
+}
+
+
+void OS::test3()
+{
+
+    pid_t pid;
+
+    pid = fork();
+
+    if(pid == 0)
+    {
+      //child prcoress
+      printf("This is the child pid - %d\n - still in progrem :will be Orphan since Father is done (Father will be init)",getpid());
+      while(1);
+
+    }
+    else
+    {
+      printf("This is the Father pid %d\n",getpid());
+    }
+}
+
+void OS:: test4()
+{
+  pid_t child_pid = fork();
+
+  // Parent process
+  if (child_pid > 0)
+      sleep(50);
+
+  // Child process
+  else
+      exit(0); // Will be Zombie
+}
+
+void OS:: test5_wait()
+{
+  printf("Different ways in which creation of Zombie can be prevented\n");
+  printf("Using Wait and Ingore Signal\n");
+
+  int i;
+  if( fork() == 0 )
+  {
+    //Son
+    for(i=0 ; i < 20 ; i++)
+    {
+      printf("I am Child %d\n", getpid());
+    }
+
+  }
+  else
+  { // Father
+    printf("Using Wait\n");
+    int pidToWait = wait(NULL);
+    printf("I'm a Father who waiteid son %d\n", pidToWait);
+  }
+}
+
+void OS:: test5_signal_ignore()
+{
+  printf("Different ways in which creation of Zombie can be prevented\n");
+  printf("Using Wait and Ingore Signal\n");
+
+  int i;
+  if( fork() == 0 )
+  {
+    //Son
+    for(i=0 ; i < 20 ; i++)
+    {
+      printf("I am Child %d\n", getpid());
+    }
+
+  }
+  else
+  { // Father
+
+    printf("Ignoring Signal\n");
+    signal(SIGCHLD, SIG_IGN);
+    printf("I'm a perent\n");
+
+  }
+}
+
+void OS::signal_hanlder()
+{
+  int pid = wait(NULL);
+  printf("Father %d recevice signal from child %d\n", getpid() , pid);
+  exit(1);
+}
+void OS:: test5_signal_hanlder()
+{
+  printf("Different ways in which creation of Zombie can be prevented\n");
+  printf("Using Wait and Ingore Signal\n");
+
+  int i;
+  if( fork() == 0 )
+  {
+    //Son
+    for(i=0 ; i < 20 ; i++)
+    {
+      printf("I am Child %d\n", getpid());
+    }
+
+  }
+  else
+  { // Father
+
+    signal(SIGCHLD, signal_hanlder);
+    printf("I'm a perent\n");
+    while(1);
+
+  }
+}
+
 #endif /* OS_hpp */
