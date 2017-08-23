@@ -28,10 +28,11 @@ public:
         int numOfTokens = 0;
         int n=0;
         int v =0;
+        int lastToken = false;
         for(int i = 0 ; i < lenght ; i++)
         {
 
-            if(*(p+i) ==(char)'.')
+            if(*(p+i) ==(char)'.' || i==lenght-1)
             {
                 numOfTokens++;
                 if(n>255)
@@ -47,13 +48,17 @@ public:
 
                 vec.push_back(n);
                 n =0;
+                
+                if(numOfTokens == 3)
+                    lastToken = true;
             }
             
             else if( *(p+i)<'0' || *(p+i) >'9')
             {
                 return false;
             }
-            else
+//
+            if(*(p+i)!='.')
             {
                 n = n*10;
                 n += *(p+i) - '0';

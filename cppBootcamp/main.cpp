@@ -14,6 +14,7 @@
 #include "search/BinarySearch.hpp"
 #include "OS.hpp"
 #include "Network.hpp"
+#include "Strings.hpp"
 using namespace std;
 
 void testing_linkedList();
@@ -23,6 +24,7 @@ void testing_BinarySearch();
 
 void testing_os();
 void testing_network();
+void testing_strings();
 
 int main(int argc, const char * argv[]) {
 
@@ -31,7 +33,8 @@ int main(int argc, const char * argv[]) {
 //    testing_queue();
 //    testing_BinarySearch();
 //    testing_os();
-    testing_network();
+//    testing_network();
+    testing_strings();
     return 0;
 }
 
@@ -123,7 +126,14 @@ void testing_os()
 }
 void testing_network(){
     Network network;
-    char ip[] = "10.100.221.1";
+    char ip[] = "10.100.221.3";
     network.checkIPString(ip);
+    
+}
+void testing_strings()
+{
+    Stings s;
+    char array[] = "aB";
+    s.test1_possible_combinations(array);
     
 }
