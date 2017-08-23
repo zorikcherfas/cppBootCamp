@@ -12,22 +12,26 @@
 #include "data-structs/Queue_Array.hpp"
 #include "data-structs/Queue_LinkedList.hpp"
 #include "search/BinarySearch.hpp"
-
+#include "OS.hpp"
+#include "Network.hpp"
 using namespace std;
 
 void testing_linkedList();
 void testing_stack();
 void testing_queue();
-
 void testing_BinarySearch();
 
+void testing_os();
+void testing_network();
 
 int main(int argc, const char * argv[]) {
 
 //    testing_linkedList();
 //    testing_stack();
 //    testing_queue();
-    testing_BinarySearch();
+//    testing_BinarySearch();
+//    testing_os();
+    testing_network();
     return 0;
 }
 
@@ -109,4 +113,17 @@ void testing_BinarySearch(){
     binarySearch->printArray();
     binarySearch->search();
 
+}
+
+void testing_os()
+{
+    OS os;
+//    os.test1();
+    os.test2();
+}
+void testing_network(){
+    Network network;
+    char ip[] = "10.100.221.1";
+    network.checkIPString(ip);
+    
 }
