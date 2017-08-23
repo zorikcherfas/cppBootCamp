@@ -32,9 +32,9 @@ int main(int argc, const char * argv[]) {
 //    testing_stack();
 //    testing_queue();
 //    testing_BinarySearch();
-//    testing_os();
+    testing_os();
 //    testing_network();
-    testing_strings();
+//    testing_strings();
     return 0;
 }
 
@@ -122,7 +122,8 @@ void testing_os()
 {
     OS os;
 //    os.test1();
-    os.test2();
+//    os.test2();
+    os.test6_pipe_between_process();
 }
 void testing_network(){
     Network network;

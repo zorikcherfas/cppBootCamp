@@ -15,7 +15,10 @@
 #include<unistd.h>
 #include<sys/wait.h>
 #include<sys/types.h>
+using namespace std;
 
+typedef void (*sighandler_t)(int);
+extern sighandler_t signal(int signum, sighandler_t handler);
 
 using namespace std;
 class OS
@@ -160,7 +163,6 @@ public:
     
     void test5_signal_hanlder()
     {
-        void signal_hanlder();
 
         printf("Different ways in which creation of Zombie can be prevented\n");
         printf("Using Wait and Ingore Signal\n");
@@ -179,11 +181,70 @@ public:
         { // Father
             
 //            signal(SIGCHLD,signal_hanlder);
+            
             printf("I'm a perent\n");
             while(1);
             
         }
     }
+    
+    void test6_pipe_between_process()
+    {
+        char fixed_str[] = "google.com";
+        char input[200];
+        
+        int fd1[2];
+        int fd2[2];
+        
+        //fd[0]; //-> for using read end
+        //fd[1]; //-> for using write end
+        if(pipe(fd1)  == -1)
+        {
+            cout <<" Cant create pipe fd1" <<endl;
+            return;
+        }
+        if(pipe(fd2) == -1)
+        {
+            cout <<" Cant create pipe fd2" <<endl;
+            return;
+        }
+        
+        std::cin >> input;
+        
+        pid_t pid = fork();
+        
+        if(pid>0)
+        {
+            
+            // Father
+            close(fd1[0]);
+            write(fd1[1], input, strlen(input));
+            wait(NULL);
+            
+            char buffer[200];
+            read(fd2[0], buffer, 200);
+            cout << buffer <<endl;
+            close(fd2[0]);
+        }
+        else
+        {
+            // Son
+            char pipeChar[200];
+            close(fd1[1]);
+            read(fd1[0], pipeChar, sizeof(pipeChar));
+//            cout <<"Reading from father " << pipeChar <<endl;
+            strcpy(pipeChar + strlen(pipeChar), fixed_str);
+//            cout << "will send to perent " << pipeChar <<endl;
+            close(fd1[0]);
+            
+            close(fd2[0]);
+            write(fd2[1], pipeChar, strlen(pipeChar));
+            close(fd2[1]);
+        }
+        
+        
+    }
+    
 };
 
     
