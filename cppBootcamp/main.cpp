@@ -14,7 +14,8 @@
 #include "BinarySearch.hpp"
 #include "OS.hpp"
 #include "Network.hpp"
-#include "Strings.hpp"
+#include "FileHanlder.hpp"
+
 using namespace std;
 
 void testing_linkedList();
@@ -25,7 +26,7 @@ void testing_BinarySearch();
 void testing_os();
 void testing_network();
 void testing_strings();
-
+void testing_file();
 int main(int argc, const char * argv[]) {
 
 //    testing_linkedList();
@@ -137,4 +138,7 @@ void testing_strings()
     char array[] = "aB";
     s.test1_possible_combinations(array);
     
+}
+void testing_file()
+{
 }
