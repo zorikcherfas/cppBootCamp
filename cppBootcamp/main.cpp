@@ -14,6 +14,7 @@
 #include "BinarySearch.hpp"
 #include "OS.hpp"
 #include "Network.hpp"
+#include "Strings.hpp"
 #include "FileHanlder.hpp"
 
 using namespace std;
@@ -33,9 +34,10 @@ int main(int argc, const char * argv[]) {
 //    testing_stack();
 //    testing_queue();
 //    testing_BinarySearch();
-    testing_os();
+//    testing_os();
 //    testing_network();
 //    testing_strings();
+    testing_file();
     return 0;
 }
 
@@ -141,4 +143,14 @@ void testing_strings()
 }
 void testing_file()
 {
+    FileHandler *fileHanlder = new FileHandler("/Users/zorikcherfas/Dev/workspace/cppBootCamp/cppBootcamp/assets/zorik.txt");
+//    fileHanlder->readFile();
+//    fileHanlder->resetFile();
+//    fileHanlder->writeToFileAppend("testing1");
+//    fileHanlder->writeToFileAppend("testing2");
+//    fileHanlder->writeToFileAppend("testing3");
+//      fileHanlder->readTail(1);
+//    fileHanlder->readFile();
+    fileHanlder->readCharacteresFromLine(2, 20);
+    
 }
