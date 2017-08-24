@@ -7,11 +7,11 @@
 //
 
 #include <iostream>
-#include "data-structs/LinkedList.hpp"
-#include "data-structs/Stack.hpp"
-#include "data-structs/Queue_Array.hpp"
-#include "data-structs/Queue_LinkedList.hpp"
-#include "search/BinarySearch.hpp"
+#include "LinkedList.hpp"
+#include "Stack.hpp"
+#include "Queue_Array.hpp"
+#include "Queue_LinkedList.hpp"
+#include "BinarySearch.hpp"
 #include "OS.hpp"
 #include "Network.hpp"
 #include "Strings.hpp"
