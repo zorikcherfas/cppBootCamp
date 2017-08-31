@@ -7,27 +7,10 @@
 //
 
 #include <iostream>
-#include "LinkedList.hpp"
-#include "Stack.hpp"
-#include "Queue_Array.hpp"
-#include "Queue_LinkedList.hpp"
-#include "BinarySearch.hpp"
-#include "OS.hpp"
-#include "Network.hpp"
-#include "Strings.hpp"
-#include "FileHanlder.hpp"
-
+#include "unitest.hpp"
 using namespace std;
 
-void testing_linkedList();
-void testing_stack();
-void testing_queue();
-void testing_BinarySearch();
 
-void testing_os();
-void testing_network();
-void testing_strings();
-void testing_file();
 int main(int argc, const char * argv[]) {
 
 //    testing_linkedList();
@@ -37,7 +20,9 @@ int main(int argc, const char * argv[]) {
 //    testing_os();
 //    testing_network();
 //    testing_strings();
-    testing_file();
+//    testing_file();
+//    testing_containres();
+    testing_quesionts();
     return 0;
 }
 
@@ -126,7 +111,9 @@ void testing_os()
     OS os;
 //    os.test1();
 //    os.test2();
-    os.test6_pipe_between_process();
+//    os.test6_pipe_between_process();
+//    os.test7_runsystem();
+    os.test8_runexec();
 }
 void testing_network(){
     Network network;
@@ -138,8 +125,9 @@ void testing_strings()
 {
     Stings s;
     char array[] = "aB";
-    s.test1_possible_combinations(array);
+//    s.test1_possible_combinations(array);
     
+    s.parsingFile();
 }
 void testing_file()
 {
@@ -151,6 +139,23 @@ void testing_file()
 //    fileHanlder->writeToFileAppend("testing3");
 //      fileHanlder->readTail(1);
 //    fileHanlder->readFile();
-    fileHanlder->readCharacteresFromLine(2, 20);
-    
+//    fileHanlder->readCharacteresFromLine(2, 20);
+}
+void testing_containres()
+{
+    Containers cntr;
+    cntr.testLinkedList();
+}
+
+void testing_quesionts()
+{
+    Questions q;
+//    q.question1();
+//    q.question2();
+//    q.question3();
+//    q.question4();
+//    q.question5();
+//    q.question6();
+    q.question7();
+
 }

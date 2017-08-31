@@ -209,6 +209,7 @@ public:
             return;
         }
         
+        
         std::cin >> input;
         
         pid_t pid = fork();
@@ -243,6 +244,18 @@ public:
         }
         
         
+    }
+    
+    void test7_runsystem(){
+        cout<<"pid is "<<getpid()<<endl;
+        system("ping 8.8.8.8 -c 3");
+        cout <<"system is done "<<endl;
+//        while(1);
+    }
+    void test8_runexec(){
+//        cout <<"pid is "<<getppid() <<endl;
+//        char *cmd[] = { "ls", "-l", (char *)0 };
+//        cout <<"execPid " <<ret <<endl;
     }
     
 };
